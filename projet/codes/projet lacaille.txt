@@ -1,0 +1,37 @@
+FMV= vanne de carburant
+HPTACC: high pressure turbin automatic clearance control: poucentage d'ouverture de la valve d'air froid (google)
+M= MACH vitesse par rapport à l'air
+N1= vitesse de rotation du fan en % , définition d'une valeur max et definition par rapport à cette vitesse
+N2= vitesse de rotation du coeur ( générateur de gaz, chambre de compression)
+NAIV = vanne anti givre donc air chaud renvoyé à l'avant du moteur pour dégivrer le moteur 
+P0= pression à l'entré"e
+PRV= vanne de prélèvement pour liberer
+PS3= pression statique station 3
+PT2= pression station 2
+P_oil= pression huile
+Q_1= débit de carburant (évolution du poids de l'avion aussi car proportionnel)
+T1= température à station 1
+T2= température station 2
+T3= """"
+T5="""""
+TAT= temperature de l'air à l'extérieur du moteur
+TBV= transfert bin van= vanne qu'on ouvre pour liberer la turbine haute pression/moteur quand il y a trop de pression 
+Tcase= temp carter a controler avec HPTACC
+TLA= position du levier dans le cocpit 
+T_oil= temperature de l'huile
+VBV= variable blid van= prelèvement au nobveau du compresseur pour eviter quil explose
+VIB= vibration AN1 filtrer autour de N1, AN2 autour du N2 pareil pour A près du fan B en aval du moteur au niveau de la chambre de combustion
+VSV= variable stator vans = entre les rotor du compresseur pour redresser l'air pour eviter les tourbillons, placer entre 2 rotors
+
+
+mettre l'utilisation de chatGPT dans le rapport
+
+etudier le lien entre carburant et vitesse
+Etudier les différents endroits de vol avec la vanne anti givre
+etudier la consommation de carburant dans les zones froides / zones chaudes
+etudier les différentes températures max dans les zones froides / zones chaudes
+etudier les vibrations en fonction de la vitesse
+etudier la vitesse des rotations en fonction de la vitesse de l'avion
+
+
+
