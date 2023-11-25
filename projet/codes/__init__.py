@@ -1,1 +1,0 @@
-from .geozone import EARTHDIR
