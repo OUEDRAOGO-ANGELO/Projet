@@ -87,6 +87,8 @@ class Opset:
             :param sortkey:   l'ordre de lecture des enregitrements par 'sorted'.
         """
         
+
+        
         if isinstance(storename,Opset):
             storename = storename.storename
             
@@ -159,8 +161,19 @@ class Opset:
             self.df = pd.read_hdf(self.storename, rec)
             
         return self.df
-        
     
+    
+    def create_List_Vol(self):
+        """ Création d'une liste de nom représentant chaque vol"""
+        list_nom=[]
+        for i in range(len(self.records)):
+            list_nom.append(f"Vol {i+1}") 
+        return list_nom    
+        
+        
+        
+        
+            
     def iterator(self, *argv):
         """ Itération sur les éléments du HDF5.
         
@@ -444,6 +457,7 @@ class Opset:
         """ Affichage de l'interface sans passage par FigureWidgets."""
         f = make_subplots(rows=1, cols=1)
         #f = go.FigureWidget(f)
+        #self.records = self.create_List_Vol()
         e = self.make_figure(f, phase,pos,name)
         
         
@@ -458,7 +472,6 @@ class Opset:
                                             e['previous_button'], 
                                             e['next_button']]),
                               widgets.HBox([out, e['signal_slider']])])
-        print("passe")
         return boxes
     
 ###########################################################################
