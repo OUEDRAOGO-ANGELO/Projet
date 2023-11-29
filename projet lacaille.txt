@@ -32,7 +32,7 @@ etudier la consommation de carburant dans les zones froides / zones chaudes
 etudier les différentes températures max dans les zones froides / zones chaudes
 etudier les vibrations en fonction de la vitesse
 etudier la vitesse des rotations en fonction de la vitesse de l'avion
+etudier TBV par rapport à l'altitude
+Afficher la heatmap de seaborn représentant la cor (en precisant les variables d'interet)
 
-
-fichier zip ???
 
