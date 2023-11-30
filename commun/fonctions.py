@@ -10,7 +10,7 @@ from ipywidgets import interact, IntSlider
 from .fonction_plot import nameunit, get_colname
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
-
+import seaborn as sns
 
 
 
@@ -334,7 +334,7 @@ class  Affichage_Interactif:
 
             # Mise à jour des titres et labels. 
             #print(self.records.values[sigpos])
-            f.update_layout(title=self.records.values[sigpos], 
+            f.update_layout(title=f"{self.records.values[sigpos]} de l'avion {self.Nomfichier}", 
                             yaxis_title=name + '  [ ' + unit + ' ]')
         # ---- Fin du calback ----
          
@@ -431,3 +431,17 @@ class  Affichage_Interactif:
                               widgets.HBox([out, e['signal_slider']])])
         return boxes
 
+
+
+
+def Affichage_heat_map(ddf,indice_part, List_col):
+    # calculate the correlation matrix
+    corr = ddf.partitions[[indice_part]][List_col].compute().corr()
+
+    # plot the heatmap
+    fig = plt.figure(figsize=(20,15))
+
+    sns.heatmap(corr,
+            xticklabels=corr.columns,
+            yticklabels=corr.columns, annot=True, fmt='.2f', vmin=-1, vmax=1, center=0, 
+            cmap=sns.diverging_palette(20, 220, n=200))
