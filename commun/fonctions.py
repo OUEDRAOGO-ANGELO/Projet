@@ -11,6 +11,8 @@ from .fonction_plot import nameunit, get_colname
 import plotly.graph_objs as go
 from plotly.subplots import make_subplots
 import seaborn as sns
+from sklearn.linear_model import LinearRegression
+
 
 
 
@@ -445,3 +447,58 @@ def Affichage_heat_map(ddf,indice_part, List_col):
             xticklabels=corr.columns,
             yticklabels=corr.columns, annot=True, fmt='.2f', vmin=-1, vmax=1, center=0, 
             cmap=sns.diverging_palette(20, 220, n=200))
+    
+  
+    
+def affichage_Consommation_TempsVol(df,num_avion):
+    """ Fonction pour afficher la consommation du carburant en fonction Temps de vol
+    -num_moteur: numéro du moteur
+    -num_avion: numéro de l'avion"""
+    plt.figure(figsize=(15,6))
+
+    
+    plt.subplot(1,2,1)
+    
+    indices = (df["Moteur"] == 1).values*(df["Avion"] == num_avion).values
+    
+    model=LinearRegression()
+    model.fit(df["Temps_Vol"][indices].values.reshape(-1,1), df["Conso"][indices].values)
+    y_pred=model.predict(df["Temps_Vol"][indices].values.reshape(-1,1))
+
+
+    
+    
+        
+    # Tracé du nuage de points
+    plt.scatter(df["Temps_Vol"][indices], df["Conso"][indices])
+    #Droite de régression
+
+    plt.plot(df["Temps_Vol"][indices], y_pred, color='red', linewidth=2, label='Régression linéaire')  # Droite de régression
+
+    plt.xlabel("Temps de vol")
+    plt.ylabel("Consomaation en lb/h")
+    plt.legend()  # Afficher la légende
+
+    plt.title(f"Affichage de la consomation au par rapport au temps de vol (Moteur 1 - Avion {num_avion} ) ", fontsize=10)
+    plt.subplot(1,2,2)
+    indices = (df["Moteur"] == 2).values*(df["Avion"] == num_avion).values
+    
+    model=LinearRegression()
+    model.fit(df["Temps_Vol"][indices].values.reshape(-1,1), df["Conso"][indices].values)
+    y_pred=model.predict(df["Temps_Vol"][indices].values.reshape(-1,1))
+    # Tracé du nuage de points
+    
+    plt.scatter(df["Temps_Vol"][indices], df["Conso"][indices])
+    #Droite de régression
+    plt.plot(df["Temps_Vol"][indices], y_pred, color='red', linewidth=2, label='Régression linéaire')  # Droite de régression
+
+    plt.xlabel("Temps de vol")
+    plt.ylabel("Consomaation en lb/h")
+    
+    plt.legend()  # Afficher la légende
+
+    plt.title(f"Affichage de la consomation au par rapport au temps de vol (Moteur 2 - Avion {num_avion} ) " , fontsize=10)
+    
+    
+    
+    
